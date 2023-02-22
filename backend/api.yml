@@ -1,0 +1,97 @@
+swagger: '2.0'
+info:
+  title: 'FDJ API'
+  description: >
+    FDJ API
+  version: '1.0.0'
+host: 'localhost:3000'
+schemes:
+  - 'http'
+
+paths:
+  /league/search:
+    post:
+      summary: 'Search with name leagues'
+      description: 'You can use this route to make an autocomplete'
+      consumes:
+        - 'application/json'
+      produces:
+        - 'application/json'
+      parameters:
+        - in: body
+          name: search
+          description: The text search
+          schema:
+            type: string
+      responses:
+        200:
+          description: 'Array of league matched with your search'
+          schema:
+            type: 'array'
+            items:
+              $ref: '#/definitions/League'
+
+  /team/league/:id:
+    get:
+      summary: 'Search teams with league id'
+      description: 'You can use this route to get all teams from a league'
+      consumes:
+        - 'application/json'
+      produces:
+        - 'application/json'
+      responses:
+        200:
+          description: 'The whole teams from the league'
+          schema:
+            $ref: '#/definitions/Team'
+
+  /player/team/:id:
+    get:
+      summary: 'Search players with team id'
+      description: 'You can use this route to get all players from a team'
+      consumes:
+        - 'application/json'
+      produces:
+        - 'application/json'
+      responses:
+        200:
+          description: 'The whole players from the team'
+          schema:
+            $ref: '#/definitions/Player'
+
+definitions:
+  League:
+    type: 'object'
+    properties:
+      _id:
+        type: 'string'
+      name:
+        type: 'string'
+      sport:
+        type: string
+      teams:
+        type: 'array'
+        items:
+          type: 'string'
+  Team:
+    type: 'object'
+    properties:
+      _id:
+        type: 'string'
+      name:
+        type: string
+      thumbnail:
+        type: string
+      players:
+        type: 'array'
+        items:
+          type: 'string'
+  Player:
+    type: 'object'
+    properties:
+      _id:
+        type: 'string'
+      name:
+        type: string
+      thumbnail:
+        type: string

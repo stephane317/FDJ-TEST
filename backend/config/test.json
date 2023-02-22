@@ -1,0 +1,11 @@
+{
+  "port": "FDJ_PORT",
+  "db": {
+    "mongo_uri": "FDJ_MONGO_URI",
+    "mongo_url": "FDJ_MONGO_URL",
+    "mongo_dbName": "FDJ_APP_DATABASE"
+  },
+  "log": {
+    "level": "FDJ_LOG_LEVEL"
+  }
+}

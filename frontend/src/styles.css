@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import '~normalize.css/normalize.css'; */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.container {
+  height: 100%;
+  width: 100%;
+}
+
+.side-menu {
+  min-width: 300px;
+}
+.inline-block {
+  display: inline-block;
+}
+.d-b {
+  display: block;
+}
+.p-20 {
+  padding: 20px;
+}
+
+.p-l-20 {
+  padding-left: 20px;
+}

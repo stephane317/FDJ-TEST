@@ -1,0 +1,12 @@
+<div>
+  <app-team-card
+    *ngFor="let team of teams$ | async"
+    [team]="team"
+    (selectedTeam)="selectedTeam($event)"
+    class="inline-block"
+  ></app-team-card>
+</div>
+
+<mat-card *ngIf="(teams$ | async)?.length === 0">
+  <mat-card-content>There is no teams for this league</mat-card-content>
+</mat-card>

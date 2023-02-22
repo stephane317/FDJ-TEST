@@ -1,0 +1,81 @@
+version: "3.7"
+
+services:
+  # FDJ Frontend
+  front:
+    build:
+      context: ./dockerfiles/frontend/
+      args:
+        NODE_VERSION: "18"
+    working_dir: /srv/app
+    command: npm run start
+    environment:
+      USER_ID: ${UID}
+      GROUP_ID: ${GID}
+      APP_DIR: /srv/app
+      NPM_CACHE_DIR: /srv/.npm
+      FDJ_LOG_DIR: /srv/logs
+    volumes:
+      - ./frontend/:/srv/app
+      - ./npm_cache/frontend:/srv/.npm
+    ports:
+      - "4200:4200"
+    networks:
+      app:
+    depends_on:
+      - api
+
+  # FDJ Backend API
+  api:
+    build:
+      context: ./dockerfiles/backend/
+      args:
+        SRC_TAG: "18.14.0"
+    image: "node:18.14.0"
+    working_dir: /srv/app
+    command: npm run start:dev
+    environment:
+      USER_ID: ${UID}
+      GROUP_ID: ${GID}
+      APP_DIR: /srv/app
+      NPM_CACHE_DIR: /srv/.npm
+      FDJ_LOG_DIR: /srv/logs
+      FDJ_PORT: 3100
+      FDJ_MONGO_URI: "mongodb://${MONGO_APP_USERNAME}:${MONGO_APP_PASSWORD}@db:27017/${MONGO_APP_DATABASE}?authSource=${MONGO_APP_DATABASE}"
+      FDJ_MONGO_URL: "db:27017"
+      FDJ_APP_DATABASE: "${MONGO_APP_DATABASE}"
+      FDJ_LOG_LEVEL: silly
+    volumes:
+      - ./backend/:/srv/app
+      - ./logs/api:/srv/logs
+      - ./npm_cache/backend:/srv/.npm
+    ports:
+      - "3100:3100"
+    networks:
+      app:
+    depends_on:
+      - db
+
+    # Mongo Databases
+  db:
+    build:
+      context: ./dockerfiles/mongo/
+      args:
+        SRC_TAG: "jammy"
+    ports:
+      - "27017:27017"
+    volumes:
+      - "mongo_data:/data/db"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME:
+      MONGO_INITDB_ROOT_PASSWORD:
+      MONGO_APP_DATABASE:
+      MONGO_APP_USERNAME:
+      MONGO_APP_PASSWORD:
+    networks:
+      app:
+
+volumes:
+  mongo_data:
+networks:
+  app:

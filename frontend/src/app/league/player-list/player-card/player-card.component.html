@@ -1,0 +1,20 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ player.name }}</mat-card-title>
+    <mat-card-subtitle>{{ player.position }}</mat-card-subtitle>
+  </mat-card-header>
+  <img
+    mat-card-image
+    [src]="player.thumbnail"
+    [alt]="player.name"
+    style="max-width: 200px; max-height: 200px"
+  />
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>{{
+        player.signin.amount | currency : player.signin.currency
+      }}</mat-list-item>
+      <mat-list-item>{{ player.born | date }} </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

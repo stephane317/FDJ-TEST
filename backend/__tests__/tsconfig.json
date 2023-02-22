@@ -1,0 +1,61 @@
+{
+  "version": "3.8.3",
+  "compilerOptions": {
+    "outDir": "../dist",
+    "lib": [
+      "es5",
+      "es6",
+      "es2019"
+    ],
+    "skipLibCheck": true,
+    "target": "es6",
+    "module": "commonjs",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "baseUrl": "../src",
+    "paths": {
+      "@testUtils/*": [
+        "../__tests__/__utils__/*"
+      ],
+      "@joi/*": [
+        "interface/Joi/*"
+      ],
+      "@type/*": [
+        "interface/type/*"
+      ],
+      "@service/*": [
+        "service/*"
+      ],
+      "@class/*": [
+        "helpers/class/*"
+      ],
+      "@utils/*": [
+        "helpers/utils/*"
+      ],
+      "@middleware/*": [
+        "middleware/*"
+      ],
+      "@manager/*": [
+        "manager/*"
+      ],
+      "@database/*": [
+        "database/*"
+      ],
+      "@app": [
+        "app"
+      ],
+      "@init/*": [
+        "init/*"
+      ],
+      "@enum/*": [
+        "interface/enum/*"
+      ],
+      "@migration/*": [
+        "../migration/*"
+      ]
+    }
+  }
+}

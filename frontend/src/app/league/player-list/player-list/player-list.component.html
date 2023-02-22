@@ -1,0 +1,7 @@
+<div>
+  <app-player-card
+    *ngFor="let player of players$ | async"
+    [player]="player"
+    class="inline-block"
+  ></app-player-card>
+</div>

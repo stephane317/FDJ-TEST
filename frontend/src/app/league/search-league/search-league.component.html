@@ -1,0 +1,20 @@
+<span>Search for league</span>
+<form [formGroup]="searchLeagueForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Search</mat-label>
+    <input formControlName="search" matInput [matAutocomplete]="auto" />
+
+    <!-- (optionSelected)="getSelectedLeague($event.league.name)" -->
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option
+        *ngFor="let league of leagues$ | async"
+        [value]="league.name"
+        (onSelectionChange)="onSelectedLeague(league)"
+      >
+        {{ league.name }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
+<router-outlet></router-outlet>

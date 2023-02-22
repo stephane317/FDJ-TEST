@@ -1,0 +1,34 @@
+{
+  "version": "3.8.3",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "lib": ["es5", "es6", "es2019", "es2020"],
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "target": "es6",
+    "module": "commonjs",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@joi/*": ["interface/joi/*"],
+      "@type/*": ["interface/type/*"],
+      "@service/*": ["service/*"],
+      "@class/*": ["helpers/class/*"],
+      "@utils/*": ["helpers/utils/*"],
+      "@middleware/*": ["middleware/*"],
+      "@manager/*": ["manager/*"],
+      "@database/*": ["database/*"],
+      "@app": ["app"],
+      "@init/*": ["init/*"],
+      "@enum/*": ["enum/*"],
+      "@migration/*": ["../migration/*"]
+    }
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["**/__mocks__/**/*.ts"]
+}

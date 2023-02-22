@@ -1,0 +1,18 @@
+<mat-divider></mat-divider>
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{ team.name }}</mat-card-title>
+    <mat-card-subtitle>{{ team.players.length }} players</mat-card-subtitle>
+  </mat-card-header>
+  <img
+    mat-card-image
+    [src]="team.thumbnail"
+    [alt]="team.name"
+    style="max-width: 200px; max-height: 200px"
+  />
+  <mat-card-content> </mat-card-content>
+  <mat-card-actions>
+    <button (click)="selectTeam()" mat-button>Selectionner</button>
+  </mat-card-actions>
+</mat-card>
